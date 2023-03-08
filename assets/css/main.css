@@ -385,6 +385,13 @@ button#saveCookies:hover, button#rejCookies:hover {
     }
 }
 
+@media only screen and (max-width: 769px) {
+    .cookies-container{
+        width: 100%!important;
+        left: 0px!important;
+    }
+}
+
 @media only screen and (max-width: 467px) {
     main {
         margin: auto;
@@ -400,6 +407,11 @@ button#saveCookies:hover, button#rejCookies:hover {
 
     .toggle {
         right: -12.5em;
+    }
+
+    .cookies-content{
+        flex-direction: column;
+        gap: 1.5em;
     }
 }
 
