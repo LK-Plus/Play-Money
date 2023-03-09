@@ -38,7 +38,7 @@ body {
 
 section.modal-cad {
     width: 450px;
-    height: 740px;
+    height: 793px;
     background: linear-gradient(150deg, #efa144, #242424 100%);
     border-radius: 10px;
     float: right;
@@ -112,7 +112,7 @@ span.togglePassword {
 div#password_rules {
     position: relative;
     left: 0em;
-    top: 0.5em;
+    top: -1.5em;
     color: #fdf7e9;
     text-align: justify;
 }
@@ -415,7 +415,7 @@ button#saveCookies:hover, button#rejCookies:hover {
     }
 }
 
-@media only screen and (max-width: 391px) {
+@media only screen and (max-width: 394px) {
     section.modal-cad {
         width: 385px;
     }
@@ -427,11 +427,16 @@ button#saveCookies:hover, button#rejCookies:hover {
     .animated-button1 {
         margin-top: 1em!important;
     }
+
+    div#password_rules {
+        font-size: 15px;
+    }
 }
 
 @media only screen and (max-width: 376px) {
     section.modal-cad {
         width: 372px;
+        height: 660px;
     }
 
     .download-title {
@@ -442,20 +447,17 @@ button#saveCookies:hover, button#rejCookies:hover {
         width: 373px;
     }
 
-    section.modal-cad {
-        height: 654px;
-    }
-
     .toggle {
         right: -11.5em;
     }
 
     .animated-button1 {
-        margin-top: 1em!important;
+        margin-top: 0em!important;
     }
 
     div#password_rules {
         bottom: 2em!important;
+        font-size: 15px;
     }
 
     div.inputs-cad {
@@ -466,6 +468,7 @@ button#saveCookies:hover, button#rejCookies:hover {
 @media only screen and (max-width: 361px){
     section.modal-cad {
         width: 357px;
+        height: 710px;
     }
 
     .toggle {
