@@ -17,22 +17,22 @@
         <section class="modal-cad">
             <form id="userRegister">
                 <div class="inputs-cad">
-                    <input type="text"  id="recipient-cpf" maxlength="14" placeholder="CPF" required/>
+                    <input type="text" name="cpf" id="recipient-cpf" maxlength="14" placeholder="CPF" required/>
                 </div>
                 <div class="inputs-cad">
-                    <input type="text" " id="recipient-name" placeholder="NOME COMPLETO" onkeypress="return validateName(event)" required/>
+                    <input type="text" name="name" id="recipient-name" placeholder="NOME COMPLETO" onkeypress="return validateName(event)" required/>
                 </div>
                 <div class="inputs-cad">
-                    <input type="email"  id="recipient-email" placeholder="E-MAIL" required/>
+                    <input type="email" name="email" id="recipient-email" placeholder="E-MAIL" required/>
                 </div>
                 <div class="inputs-cad">
-                    <input width="100%" type="text"  id="recipient-fone" name="telForm" placeholder="" maxlength="15" required/>
+                    <input width="100%" name="tel" type="text"  id="recipient-fone" placeholder="" maxlength="15" required/>
                 </div>
                 <div class="inputs-cad">
-                    <input type="text"  id="recipient-nick" maxlength="15" placeholder="NICK" onkeypress="return validateNick(event)" required/>
+                    <input type="text"  name="username" id="recipient-nick" maxlength="15" placeholder="NICK" onkeypress="return validateNick(event)" required/>
                 </div>
                 <div class="inputs-cad">
-                    <input type="password" class="validate password" id="recipient-pw" placeholder="SENHA" required />
+                    <input type="password" name="password" class="validate password" id="recipient-pw" placeholder="SENHA" required />
                     <button type="button" id="btnToggle" class="toggle">
                         <img id="eyeIcon" src="assets/img/view.png" alt="">
                         <img id="eyeIconHide" class="hide toggle" src="assets/img/hide.png" alt="">
@@ -132,12 +132,12 @@
             </div>
         </div>
     </section>
-    
+
 </body>
 <script src="assets/js/libs/jquery/jquery.js"></script>
 <script src="assets/js/libs/jquery/jquery-mask.js"></script>
 <script src="https://pokerbyte.com.br/assets/vendors/intl-tel-input/js/intlTelInput.js"></script>
 <script src="https://kit.fontawesome.com/fe191507c0.js" crossorigin="anonymous"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=<?=time()?>"></script>
 <script src="assets/js/libs/SweetAlert/sweetalert.min.js"></script>
 </html>
