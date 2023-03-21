@@ -153,6 +153,15 @@ $(document).ready(function () {
 
     formatarTelefoneInput(`#recipient-fone`);
 
+    //Validação data de nascimento
+    $('#dt_nascimento').on('change', function () {
+        if($('#dt_nascimento').val() == '') {
+            $("#dt_nascimento").css('border','2.5px solid red');
+        }else {
+            $("#dt_nascimento").css('border','2.5px solid #00a000');
+        }
+    });
+
     //Validação Nick
     $('#recipient-nick').on('change', function () {
         if ($('#recipient-nick').val() == '') {
@@ -321,6 +330,12 @@ const numberOnly = (evt) => {
         if(theEvent.preventDefault) theEvent.preventDefault();
     }
 };
+
+//mask data nascimento
+$('#dt_nascimento').mask('00/00/0000');
+
+//mask cpf
+$('#recipient-cpf').mask('000.000.000-00');
 
 
 //Regex nome
