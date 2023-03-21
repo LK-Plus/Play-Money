@@ -1,75 +1,75 @@
 $(document).ready(function () {
     //Validação CPF
-    $("#recipient-cpf").on('change', function() {	  
-        if($("#recipient-cpf").val() == '') {	
+    $("#recipient-cpf").on('change', function() {
+        if($("#recipient-cpf").val() == '') {
             $("#recipient-cpf").css('border','2.5px solid red');
           return false;
         };
-    
+
         if(validateCPF($("#recipient-cpf").val())) {
             $("#recipient-cpf").css('border','2.5px solid #00a000');
         } else {
             $("#recipient-cpf").css('border','2.5px solid red');
         };
     });
-    
-    const validateCPF = (cpf) => {  
-        cpf = cpf.replace(/[^\d]+/g,''); 
-    
-        if(cpf == '') return false; 
-       
-        if (cpf.length != 11 || 
-            cpf == "00000000000" || 
-            cpf == "11111111111" || 
-            cpf == "22222222222" || 
-            cpf == "33333333333" || 
-            cpf == "44444444444" || 
-            cpf == "55555555555" || 
-            cpf == "66666666666" || 
-            cpf == "77777777777" || 
-            cpf == "88888888888" || 
+
+    const validateCPF = (cpf) => {
+        cpf = cpf.replace(/[^\d]+/g,'');
+
+        if(cpf == '') return false;
+
+        if (cpf.length != 11 ||
+            cpf == "00000000000" ||
+            cpf == "11111111111" ||
+            cpf == "22222222222" ||
+            cpf == "33333333333" ||
+            cpf == "44444444444" ||
+            cpf == "55555555555" ||
+            cpf == "66666666666" ||
+            cpf == "77777777777" ||
+            cpf == "88888888888" ||
             cpf == "99999999999")
-                return false;       
-    
-        let add = 0;    
+                return false;
+
+        let add = 0;
         for (i=0; i < 9; i ++) {
-            add += parseInt(cpf.charAt(i)) * (10 - i);  
+            add += parseInt(cpf.charAt(i)) * (10 - i);
         };
-    
-        let rev = 11 - (add % 11);  
+
+        let rev = 11 - (add % 11);
         if (rev == 10 || rev == 11) {
-            rev = 0;    
+            rev = 0;
         };
-    
+
         if (rev != parseInt(cpf.charAt(9))) {
-            return false;       
-        }; 
-    
-        add = 0;    
+            return false;
+        };
+
+        add = 0;
         for (i = 0; i < 10; i ++) {
-            add += parseInt(cpf.charAt(i)) * (11 - i);  
-        }; 
-    
-        rev = 11 - (add % 11);  
-    
+            add += parseInt(cpf.charAt(i)) * (11 - i);
+        };
+
+        rev = 11 - (add % 11);
+
         if (rev == 10 || rev == 11) {
-            rev = 0;    
+            rev = 0;
         };
-    
+
         if (rev != parseInt(cpf.charAt(10))){
-            return false;       
+            return false;
         };
-        
-        return true;   
+
+        return true;
     };
 
     //Validação do Nome
     $('#recipient-name').on('change', function () {
-        if($("#recipient-name").val() == '') {		
+        if($("#recipient-name").val() == '') {
             $("#recipient-name").css('border','2.5px solid red');
             return false;
         };
-        
+
         if($("#recipient-name").val()) {
             $("#recipient-name").css('border','2.5px solid #00a000');
 
@@ -82,18 +82,18 @@ $(document).ready(function () {
     //Validação E-mail
     let rx = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
     $('#recipient-email').on('change', function() {
-    
+
         if (rx.test($('#recipient-email').val().trim()) == '') {
             $("#recipient-email").css('border','2.5px solid red');
         };
-        
+
         if(rx.test($('#recipient-email').val().trim())) {
             $("#recipient-email").css('border','2.5px solid #00a000');
         } else {
             $("#recipient-email").css('border','2.5px solid red');
         };
     });
-    
+
     //Validação Numero Telefonico
     window.iti = [];
     const formatarTelefoneInput = (identify, value = null) => {
@@ -101,7 +101,7 @@ $(document).ready(function () {
         var itiTmp = window.intlTelInput(input, {
             initialCountry: 'br',
             formatOnDisplay: true,
-    
+
             geoIpLookup: (callback) => {
                 $.get("https://ipinfo.io", () => {}, 'jsonp').always((resp) => {
                     var countryCode = (resp && resp.country) ? resp.country : '';
@@ -116,25 +116,25 @@ $(document).ready(function () {
             },
             nationalMode: true,
             separateDialCode: true,
-    
+
             preferredCountries: ['br', 'ru', 'pe'],
             utilsScript: 'https://www.pokerbyte.com.br/assets/vendors/intl-tel-input/js/utils.js',
         });
-    
+
         $(identify).unmask().mask($(identify).attr('placeholder').replace(/[1-9]/g, '0') || '00 00000-0000');
         input.addEventListener("open:countrydropdown", () => {
             $(identify).unmask();
             $(identify).val('');
         });
-    
+
         input.addEventListener("close:countrydropdown", () => {
             $(identify).mask($(identify).attr('placeholder'));
         });
-    
+
         if (value) {
             itiTmp.setNumber(value.replace(/\D/g, ''));
         };
-    
+
         window.iti[identify] = itiTmp;
         return window.iti[identify];
     };
@@ -143,14 +143,14 @@ $(document).ready(function () {
         if ($('#recipient-fone').val() == '') {
             $("#recipient-fone").css('border','2.5px solid red');
         };
-        
+
         if($('#recipient-fone').val()) {
             $("#recipient-fone").css('border','2.5px solid #00a000');
         } else {
             $("#recipient-fone").css('border','2.5px solid red');
         };
     });
-    
+
     formatarTelefoneInput(`#recipient-fone`);
 
     //Validação data de nascimento
@@ -164,10 +164,10 @@ $(document).ready(function () {
 
     //Validação Nick
     $('#recipient-nick').on('change', function () {
-        if ($('#recipient-nick').val() == '') {	
+        if ($('#recipient-nick').val() == '') {
             $("#recipient-nick").css('border','2.5px solid red');
         };
-        
+
         if($('#recipient-nick').val()) {
             $("#recipient-nick").css('border','2.5px solid #00a000');
         } else {
@@ -177,12 +177,12 @@ $(document).ready(function () {
 
     //Validação PW
     let validateInput = $('input.validate');
-    
+
     const validateInputs = () => {
         let password = $('#recipient-pw').val();
         let conf = $('#recipient-pwConf').val();
         let all_pass = true;
-            
+
         let uppercase = password.match(/[A-Z]/);
         let number = password.match(/[0-9]/);
 
@@ -196,7 +196,7 @@ $(document).ready(function () {
             $('.password_uppercase').removeClass('complete');
             all_pass = false;
         };
-        
+
         if (number) $('.password_number').addClass('complete');
         else {
             $('.password_number').removeClass('complete');
@@ -210,13 +210,13 @@ $(document).ready(function () {
             $("#recipient-pwConf").css('border','2.5px solid #00a000');
         }else {
             $('.password_match').removeClass('complete');
-            
+
             all_pass = false;
         };
     }
 
-    validateInput.each(validateInputs).on('keyup', validateInputs);    
-    
+    validateInput.each(validateInputs).on('keyup', validateInputs);
+
     $('#btnToggle').on('click', function () {
         let passwordInput = document.getElementById('recipient-pw');
         if (passwordInput.type === 'password') {
@@ -231,10 +231,14 @@ $(document).ready(function () {
     });
 
 
-    //Envio de Dados 
-    $('#button-register').on('click', function() {
-        if( $('#recipient-cpf').val() == '' 
-        ||  $('#recipient-name').val() == '' 
+    //Envio de Dados
+    $('#button-register').on('click', async function() {
+        const form = document.querySelector('#userRegister');
+        const formData = new FormData(form)
+        const data = new URLSearchParams(formData)
+
+        if( $('#recipient-cpf').val() == ''
+        ||  $('#recipient-name').val() == ''
         ||  $('#recipient-email').val() == ''
         ||  $('#recipient-fone').val() == ''
         ||  $('#recipient-nick').val() == ''
@@ -247,7 +251,7 @@ $(document).ready(function () {
                 icon: "warning",
                 button: "Fechar",
             });
-        }else if( $('#recipient-pw').val() 
+        }else if( $('#recipient-pw').val()
         !== $('#recipient-pwConf').val()
         ){
             $("#recipient-pw").css('border','2.5px solid red');
@@ -259,6 +263,13 @@ $(document).ready(function () {
                 button: "Fechar",
             });
         }else {
+            fetch('./api.php', {
+                method: 'POST',
+                body: data
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
             $('#userRegister').hide();
             $('.modal-cad').addClass('animate__animated animate__fadeInRight');
             $('#userCode').show();
@@ -289,7 +300,7 @@ $(document).ready(function () {
 
     const cookiesPref = window.localStorage.getItem('cookies-policy');
     if(cookiesPref){
-        activeCookies(cookiesPref)  
+        activeCookies(cookiesPref)
     };
 
     if(cookiesPref == 'true') {
@@ -361,7 +372,7 @@ function handleCharacter (event)  {
     let rest = $input.val().slice(1);
     let $next;
     if (rest.length > 0) {
-        $input.val(digit); 
+        $input.val(digit);
         $next = $(`.inputs[name="chars[${index + 1}]"]`);
         if ($next.length > 0) {
             $next.val(rest);
@@ -406,7 +417,7 @@ function checkInputFinal  () {
 $('.inputs')
     .on('keyup', handleCharacter)
     .on('keydown', handleBackspace);
-    
+
 $('.inputFinal').on('change', checkInputFinal);
 
 function isFieldEmpty  (value) {
