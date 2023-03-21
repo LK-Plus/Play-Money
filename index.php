@@ -32,6 +32,9 @@
                     <input type="tel" name="birthdate" id="dt_nascimento" class="form-control" placeholder=" DATA DE NASCIMENTO">
                 </div>
                 <div class="inputs-cad">
+                    <input type="text"  id="recipient-nick" maxlength="15" placeholder="NICK" onkeypress="return validateNick(event)" required/>
+                </div>
+                <div class="inputs-cad">
                     <input type="text"  name="username" id="recipient-nick" maxlength="15" placeholder="NICK" onkeypress="return validateNick(event)" required/>
                 </div>
                 <div class="inputs-cad">
