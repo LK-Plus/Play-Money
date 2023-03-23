@@ -7,14 +7,14 @@
     <link rel="shortcut icon" href="assets/img/cropped-Suprema-Logo.png" />
     <link rel="stylesheet" href="https://pokerbyte.com.br/assets/vendors/intl-tel-input/css/intlTelInput.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css?v=<?=time()?>">
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/button.css">
     <title>Bem vindo - Suprema Online</title>
 </head>
 <body style="background-image: url('assets/img/TV_DIVIRTA-SE_SPRM.png');">
 
     <main>
-        <section class="modal-cad" style="overflow-y: auto;">
+        <section class="modal-cad">
             <form id="userRegister">
                 <div class="inputs-cad">
                     <input type="text" name="cpf" id="recipient-cpf" maxlength="14" placeholder="CPF" required/>
@@ -32,7 +32,7 @@
                     <input type="date" name="birthdate" id="dt_nascimento" class="form-control" placeholder=" DATA DE NASCIMENTO">
                 </div>
                 <div class="inputs-cad">
-                    <input type="text"  name="username" id="recipient-nick" placeholder="NICK" onkeypress="return validateNick(event)" maxlength="20" required/>
+                    <input type="text"  name="username" id="recipient-nick" maxlength="15" placeholder="NICK" onkeypress="return validateNick(event)" required/>
                 </div>
                 <div class="inputs-cad">
                     <input type="password" name="password" class="validate password" id="recipient-pw" placeholder="SENHA" maxlength="16" required />
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
                 <section>
-                    <a type="button" id="button-register">
+                    <a type="button" id="button-register" class="animated-button1" >
                         <span></span>
                         <span></span>
                         <span></span>

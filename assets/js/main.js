@@ -237,7 +237,7 @@ $(document).ready(function () {
         const formData = new FormData(form)
         const data = new URLSearchParams(formData)
 
-        if( $('#recipient-cpf').val() == ''
+        if ( $('#recipient-cpf').val() == ''
         ||  $('#recipient-name').val() == ''
         ||  $('#recipient-email').val() == ''
         ||  $('#recipient-fone').val() == ''
@@ -251,7 +251,7 @@ $(document).ready(function () {
                 icon: "warning",
                 button: "Fechar",
             });
-        }else if( $('#recipient-pw').val()
+        } else if( $('#recipient-pw').val()
         !== $('#recipient-pwConf').val()
         ){
             $("#recipient-pw").css('border','2.5px solid red');
@@ -262,32 +262,34 @@ $(document).ready(function () {
                 icon: "warning",
                 button: "Fechar",
             });
-        }else {
+        } else if( $('#recipient-pw').val().length >= 17 && $('#recipient-pw').val().length <= 5 ){
+            $("#recipient-pw").css('border','2.5px solid red');
+            $("#recipient-pwConf").css('border','2.5px solid red');
+            swal({
+                title: "Atenção!",
+                text: "Senhas muito longa.",
+                icon: "warning",
+                button: "Fechar",
+            });
+        } else {
             fetch('./api.php', {
                 method: 'POST',
                 body: data
             })
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
-            $('#userRegister').hide();
-            $('.modal-cad').addClass('animate__animated animate__fadeInRight');
-            $('#userCode').show();
-        }
-    });
-
-    //Envio do código
-    $('#button-code').on('click', function() {
-        if($('.inputs').val() == '') {
-            swal({
-                title: "Atenção!",
-                text: "Verificar se todos os campos foram preenchidos corretamente.",
-                icon: "warning",
-                button: "Fechar",
+            .then(res => {
+                if (res && res.success) {
+                    $('#userRegister').hide();
+                    $('.modal-cad').addClass('animate__animated animate__fadeInRight');
+                    $('#download-app').show();
+                } else {
+                    alert(res.message || 'Erro na solicitação.')
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                return error;
             });
-        }else {
-            $('#userCode').hide();
-            $('#download-app').show();
         }
     });
 
